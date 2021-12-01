@@ -1,13 +1,24 @@
 package kr.bettercode.msamodelforjava.model;
 
+import java.util.List;
 import java.util.Objects;
 
-public class Transactions {
+public class Transaction {
 
   private Long id;
   private String chargingConnector;
   private TransactionStatus status;
-  private Long chargePointId;
+  private List<TransactionEvent> transactionEvents;
+
+  public Transaction() {}
+
+  public Transaction(Long id, String chargingConnector, TransactionStatus status,
+      List<TransactionEvent> transactionEvents) {
+    this.id = id;
+    this.chargingConnector = chargingConnector;
+    this.status = status;
+    this.transactionEvents = transactionEvents;
+  }
 
   public Long getId() {
     return id;
@@ -33,12 +44,12 @@ public class Transactions {
     this.status = status;
   }
 
-  public Long getChargePointId() {
-    return chargePointId;
+  public List<TransactionEvent> getTransactionEvents() {
+    return transactionEvents;
   }
 
-  public void setChargePointId(Long chargePointId) {
-    this.chargePointId = chargePointId;
+  public void setTransactionEvents(List<TransactionEvent> transactionEvents) {
+    this.transactionEvents = transactionEvents;
   }
 
   @Override
@@ -49,23 +60,22 @@ public class Transactions {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Transactions that = (Transactions) o;
-    return Objects.equals(getId(), that.getId()) && Objects.equals(getChargingConnector(), that.getChargingConnector())
-        && getStatus() == that.getStatus() && Objects.equals(getChargePointId(), that.getChargePointId());
+    Transaction that = (Transaction) o;
+    return Objects.equals(getId(), that.getId()) && Objects.equals(getChargingConnector(),
+        that.getChargingConnector()) && getStatus() == that.getStatus();
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(getId(), getChargingConnector(), getStatus(), getChargePointId());
+    return Objects.hash(getId(), getChargingConnector(), getStatus());
   }
 
   @Override
   public String toString() {
-    return "Transactions{" +
+    return "Transaction{" +
         "id=" + id +
         ", chargingConnector='" + chargingConnector + '\'' +
         ", status=" + status +
-        ", chargePointId=" + chargePointId +
         '}';
   }
 }

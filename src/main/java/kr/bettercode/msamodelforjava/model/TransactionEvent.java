@@ -2,11 +2,19 @@ package kr.bettercode.msamodelforjava.model;
 
 import java.util.Objects;
 
-public class TransactionEvents {
+public class TransactionEvent {
 
   private Long id;
   private EventType eventType;
-  private String eventData;
+  private String eventData; // JSON
+
+  public TransactionEvent() {}
+
+  public TransactionEvent(Long id, EventType eventType, String eventData) {
+    this.id = id;
+    this.eventType = eventType;
+    this.eventData = eventData;
+  }
 
   public Long getId() {
     return id;
@@ -40,7 +48,7 @@ public class TransactionEvents {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TransactionEvents that = (TransactionEvents) o;
+    TransactionEvent that = (TransactionEvent) o;
     return Objects.equals(getId(), that.getId()) && getEventType() == that.getEventType()
         && Objects.equals(getEventData(), that.getEventData());
   }

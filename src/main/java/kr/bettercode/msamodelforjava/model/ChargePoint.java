@@ -1,5 +1,6 @@
 package kr.bettercode.msamodelforjava.model;
 
+import java.util.List;
 import java.util.Objects;
 
 public class ChargePoint {
@@ -8,14 +9,16 @@ public class ChargePoint {
   private String vendor;
   private String model;
   private ChargePointStatus status;
+  private List<Transaction> transactions;
 
   public ChargePoint() {}
 
-  public ChargePoint(Long id, String vendor, String model, ChargePointStatus status) {
+  public ChargePoint(Long id, String vendor, String model, ChargePointStatus status, List<Transaction> transactions) {
     this.id = id;
     this.vendor = vendor;
     this.model = model;
     this.status = status;
+    this.transactions = transactions;
   }
 
   public Long getId() {
@@ -48,6 +51,14 @@ public class ChargePoint {
 
   public void setStatus(ChargePointStatus status) {
     this.status = status;
+  }
+
+  public List<Transaction> getTransactions() {
+    return transactions;
+  }
+
+  public void setTransactions(List<Transaction> transactions) {
+    this.transactions = transactions;
   }
 
   @Override
