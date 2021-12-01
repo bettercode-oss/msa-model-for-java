@@ -28,12 +28,24 @@ CREATE TABLE `transactions`
 DROP TABLE IF EXISTS `transaction_events`;
 CREATE TABLE `transaction_events`
 (
-    `id`             bigint(20)   NOT NULL AUTO_INCREMENT,
-    `event_type`     varchar(255) NOT NULL,
+    `id`             bigint(20)    NOT NULL AUTO_INCREMENT,
+    `event_type`     varchar(255)  NOT NULL,
     `event_data`     varchar(8192) NOT NULL,
-    `transaction_id` bigint(20)   NOT NULL,
+    `transaction_id` bigint(20)    NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_unicode_ci;
+
+DROP TABLE IF EXISTS `example`;
+CREATE TABLE `example`
+(
+    `id`    bigint(20)   NOT NULL AUTO_INCREMENT,
+    `name`  varchar(255) NOT NULL,
+    `age`   int          NOT NULL,
+    `email` varchar(255) NOT NULL,
+    PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
