@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/logging")
 public class LoggingExampleController {
 
-  @GetMapping("")
+  @GetMapping
   public void logExample() {
     log.info("===========================================================================================");
     log.trace("trace는 매우 상세한 정보를 로깅합니다.");
