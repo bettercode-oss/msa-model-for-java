@@ -1,5 +1,6 @@
 package kr.bettercode.msamodelforjava.controller;
 
+import kr.bettercode.msamodelforjava.dto.ChargeMeterResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,8 +22,12 @@ public class TransactionController {
   }
 
   @PutMapping("/{transactionId}/meters")
-  public void getMeters(@PathVariable Long chargePointId, @PathVariable Long transactionId) {
+  public ChargeMeterResponse getMeters(@PathVariable Long chargePointId, @PathVariable Long transactionId) {
     log.info("현재 충전량 확인: 충전소 id: {}, transaction id: {}", chargePointId, transactionId);
+
+    ChargeMeterResponse chargeMeterResponse = new ChargeMeterResponse(100);
+    log.info("충전량: {}", chargeMeterResponse);
+    return chargeMeterResponse;
   }
 
   @PutMapping("/{transactionId}/stop")
