@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 이 클래스는 로그를 남길 때 참고하기 위한 정보를 담고있습니다. 로깅 예제를 직접 실행해보고, 조작하면서 로그를 확인해보세요.
+ */
 @Slf4j
 @RestController
 @RequestMapping("/logging")
