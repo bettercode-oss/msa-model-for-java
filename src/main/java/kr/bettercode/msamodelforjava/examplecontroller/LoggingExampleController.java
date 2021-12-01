@@ -1,4 +1,4 @@
-package kr.bettercode.msamodelforjava.controller;
+package kr.bettercode.msamodelforjava.examplecontroller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
