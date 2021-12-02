@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("/example")
+@RequestMapping("/examples")
 public class CudExampleController {
 
   private final ExampleService exampleService;
