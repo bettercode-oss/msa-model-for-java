@@ -1,11 +1,11 @@
-package kr.bettercode.msamodelforjava.examplecontroller;
+package kr.bettercode.msamodelforjava.example.controller;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import kr.bettercode.msamodelforjava.dto.example.ExampleCreateRequest;
-import kr.bettercode.msamodelforjava.dto.example.ExampleUpdateRequest;
-import kr.bettercode.msamodelforjava.dto.example.IdResponse;
-import kr.bettercode.msamodelforjava.service.ExampleService;
+import kr.bettercode.msamodelforjava.example.dto.request.ExampleCreateRequest;
+import kr.bettercode.msamodelforjava.example.dto.request.ExampleUpdateRequest;
+import kr.bettercode.msamodelforjava.example.dto.response.IdResponse;
+import kr.bettercode.msamodelforjava.example.service.ExampleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;

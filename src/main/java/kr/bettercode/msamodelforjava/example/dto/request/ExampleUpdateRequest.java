@@ -1,6 +1,6 @@
-package kr.bettercode.msamodelforjava.dto.example;
+package kr.bettercode.msamodelforjava.example.dto.request;
 
-import kr.bettercode.msamodelforjava.model.Example;
+import kr.bettercode.msamodelforjava.example.model.Example;
 import lombok.Data;
 import org.springframework.lang.Nullable;
 

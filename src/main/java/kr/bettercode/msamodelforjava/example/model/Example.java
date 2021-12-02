@@ -1,4 +1,4 @@
-package kr.bettercode.msamodelforjava.model;
+package kr.bettercode.msamodelforjava.example.model;
 
 import java.util.Objects;
 import javax.validation.constraints.Email;

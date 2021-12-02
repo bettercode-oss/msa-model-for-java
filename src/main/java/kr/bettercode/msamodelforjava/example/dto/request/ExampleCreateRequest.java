@@ -1,9 +1,9 @@
-package kr.bettercode.msamodelforjava.dto.example;
+package kr.bettercode.msamodelforjava.example.dto.request;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
-import kr.bettercode.msamodelforjava.model.Example;
+import kr.bettercode.msamodelforjava.example.model.Example;
 import lombok.Data;
 
 @Data

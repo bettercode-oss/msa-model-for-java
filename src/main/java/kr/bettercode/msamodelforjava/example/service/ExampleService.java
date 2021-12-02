@@ -1,14 +1,14 @@
-package kr.bettercode.msamodelforjava.service;
+package kr.bettercode.msamodelforjava.example.service;
 
 import java.util.Set;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 import javax.validation.constraints.NotNull;
-import kr.bettercode.msamodelforjava.dto.example.ExampleCreateRequest;
-import kr.bettercode.msamodelforjava.dto.example.ExampleUpdateRequest;
-import kr.bettercode.msamodelforjava.model.Example;
-import kr.bettercode.msamodelforjava.repository.ExampleRepository;
+import kr.bettercode.msamodelforjava.example.dto.request.ExampleCreateRequest;
+import kr.bettercode.msamodelforjava.example.dto.request.ExampleUpdateRequest;
+import kr.bettercode.msamodelforjava.example.model.Example;
+import kr.bettercode.msamodelforjava.example.repository.ExampleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

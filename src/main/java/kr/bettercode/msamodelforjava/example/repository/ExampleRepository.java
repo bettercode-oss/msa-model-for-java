@@ -1,6 +1,6 @@
-package kr.bettercode.msamodelforjava.repository;
+package kr.bettercode.msamodelforjava.example.repository;
 
-import kr.bettercode.msamodelforjava.model.Example;
+import kr.bettercode.msamodelforjava.example.model.Example;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

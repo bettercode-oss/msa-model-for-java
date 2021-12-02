@@ -1,4 +1,4 @@
-package kr.bettercode.msamodelforjava.dto.example;
+package kr.bettercode.msamodelforjava.example.dto.response;
 
 import lombok.Data;
 
