@@ -28,6 +28,7 @@ public class CudExampleController {
     this.exampleService = exampleService;
   }
 
+  @ResponseStatus(HttpStatus.CREATED)
   @PostMapping
   public IdResponse create(@RequestBody @Valid ExampleCreateRequest request) {
     log.debug("example 생성 요청 정보: {}", request);
