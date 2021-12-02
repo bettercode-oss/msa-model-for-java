@@ -36,7 +36,6 @@
   <select id="list" parameterType="kr.bettercode.msamodelforjava.example.dto.request.PageRequest" resultMap="example">
     SELECT `id`, `name`, age, email
     FROM example
-    WHERE 1 = 1
     LIMIT #{size,jdbcType=INTEGER}
     <if test="page > 1">
       OFFSET #{offset,jdbcType=INTEGER}
@@ -50,14 +49,14 @@
            #{page,jdbcType=INTEGER}                  AS currentPage,
            CEIL(COUNT(*) / #{size,jdbcType=INTEGER}) AS totalPage
     FROM example
-    WHERE 1 = 1
   </select>
 
   <select id="listSearch" resultType="kr.bettercode.msamodelforjava.example.model.Example">
     SELECT `id`, `name`, age, email
     FROM example
-    WHERE 1 = 1
-    <include refid="search"/>
+    <where>
+      <include refid="search"/>
+    </where>
     LIMIT #{pageRequest.size,jdbcType=INTEGER}
     <if test="pageRequest.page > 1">
       OFFSET #{pageRequest.offset,jdbcType=INTEGER}
@@ -72,8 +71,9 @@
            CEIL(COUNT(*) / #{pageRequest.size,jdbcType=INTEGER}) AS totalPage
     #@formatter:on
     FROM example
-    WHERE 1 = 1
-    <include refid="search"/>
+    <where>
+      <include refid="search"/>
+    </where>
   </select>
 
   <insert id="save" keyColumn="id" keyProperty="id" parameterType="kr.bettercode.msamodelforjava.example.model.Example"
