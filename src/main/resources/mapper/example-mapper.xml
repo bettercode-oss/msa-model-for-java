@@ -16,6 +16,26 @@
     WHERE id = #{id,jdbcType=BIGINT}
   </select>
 
+  <select id="list" parameterType="kr.bettercode.msamodelforjava.example.dto.request.PageRequest" resultMap="example">
+    SELECT `id`, `name`, age, email
+    FROM example
+    WHERE 1 = 1
+    LIMIT #{size,jdbcType=INTEGER}
+    <if test="page > 1">
+      OFFSET #{offset,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <select id="getPagingInfo" parameterType="kr.bettercode.msamodelforjava.example.dto.request.PageRequest"
+    resultType="kr.bettercode.msamodelforjava.example.dto.response.PagingInfoResponse">
+    SELECT COUNT(*)                                  AS totalCount,
+           #{size,jdbcType=INTEGER}                  AS pageSize,
+           #{page,jdbcType=INTEGER}                  AS currentPage,
+           CEIL(COUNT(*) / #{size,jdbcType=INTEGER}) AS totalPage
+    FROM example
+    WHERE 1 = 1
+  </select>
+
   <insert id="save" keyColumn="id" keyProperty="id" parameterType="kr.bettercode.msamodelforjava.example.model.Example"
     useGeneratedKeys="true">
     INSERT INTO example (`name`, age, email)
