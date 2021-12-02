@@ -2,9 +2,9 @@ package kr.bettercode.msamodelforjava.example.dto.request;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Positive;
 import kr.bettercode.msamodelforjava.example.model.Example;
 import lombok.Data;
+import org.hibernate.validator.constraints.Range;
 
 @Data
 public class ExampleCreateRequest {
@@ -12,7 +12,7 @@ public class ExampleCreateRequest {
   @NotEmpty
   private String name;
 
-  @Positive
+  @Range(min = 0, max = 150)
   private Integer age;
 
   @Email
