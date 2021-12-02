@@ -8,6 +8,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 import javax.validation.constraints.NotNull;
 import kr.bettercode.msamodelforjava.example.dto.request.ExampleCreateRequest;
+import kr.bettercode.msamodelforjava.example.dto.request.ExampleSearchRequest;
 import kr.bettercode.msamodelforjava.example.dto.request.ExampleUpdateRequest;
 import kr.bettercode.msamodelforjava.example.dto.request.PageRequest;
 import kr.bettercode.msamodelforjava.example.dto.response.ExampleResponse;
@@ -84,6 +85,22 @@ public class ExampleService {
     log.debug("변환된 example 목록: {}", exampleResponses);
 
     PagingInfoResponse pagingInfo = exampleRepository.getPagingInfo(pageRequest);
+    ExamplesResponse examplesResponse = new ExamplesResponse(exampleResponses, pagingInfo);
+    log.debug("examplesResponse: {}", examplesResponse);
+    return examplesResponse;
+  }
+
+  @Transactional(readOnly = true)
+  public ExamplesResponse search(PageRequest pageRequest, ExampleSearchRequest searchRequest) {
+    List<Example> examples = exampleRepository.listSearch(pageRequest, searchRequest);
+    log.debug("조회된 example 목록: {}", examples);
+
+    List<ExampleResponse> exampleResponses = examples.stream()
+        .map(ExampleResponse::new)
+        .collect(Collectors.toList());
+    log.debug("변환된 example 목록: {}", exampleResponses);
+
+    PagingInfoResponse pagingInfo = exampleRepository.getPagingInfoSearch(pageRequest, searchRequest);
     ExamplesResponse examplesResponse = new ExamplesResponse(exampleResponses, pagingInfo);
     log.debug("examplesResponse: {}", examplesResponse);
     return examplesResponse;
