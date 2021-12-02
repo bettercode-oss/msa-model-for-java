@@ -7,8 +7,10 @@ import kr.bettercode.msamodelforjava.example.dto.response.PagingInfoResponse;
 import kr.bettercode.msamodelforjava.example.model.Example;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 @Mapper
+@Repository
 public interface ExampleRepository {
 
   Example findById(Long id);
