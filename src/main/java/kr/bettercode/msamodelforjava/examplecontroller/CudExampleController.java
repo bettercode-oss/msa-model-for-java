@@ -2,8 +2,8 @@ package kr.bettercode.msamodelforjava.examplecontroller;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import kr.bettercode.msamodelforjava.dto.ExampleCreateRequest;
-import kr.bettercode.msamodelforjava.dto.ExampleUpdateRequest;
+import kr.bettercode.msamodelforjava.dto.example.ExampleCreateRequest;
+import kr.bettercode.msamodelforjava.dto.example.ExampleUpdateRequest;
 import kr.bettercode.msamodelforjava.dto.example.IdResponse;
 import kr.bettercode.msamodelforjava.service.ExampleService;
 import lombok.extern.slf4j.Slf4j;

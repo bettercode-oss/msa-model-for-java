@@ -1,4 +1,4 @@
-package kr.bettercode.msamodelforjava.dto;
+package kr.bettercode.msamodelforjava.dto.example;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
