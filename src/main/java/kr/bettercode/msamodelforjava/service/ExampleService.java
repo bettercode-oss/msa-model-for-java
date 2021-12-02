@@ -4,7 +4,9 @@ import java.util.Set;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
+import javax.validation.constraints.NotNull;
 import kr.bettercode.msamodelforjava.dto.ExampleCreateRequest;
+import kr.bettercode.msamodelforjava.dto.ExampleUpdateRequest;
 import kr.bettercode.msamodelforjava.model.Example;
 import kr.bettercode.msamodelforjava.repository.ExampleRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -24,24 +26,34 @@ public class ExampleService {
   }
 
   @Transactional
-  public int create(ExampleCreateRequest request) {
+  public Long create(ExampleCreateRequest request) {
     Example example = request.toModel();
     log.debug("변환된 example 정보: {}", example);
 
     validate(example);
-    int id = exampleRepository.save(example);
+    Long id = exampleRepository.save(example);
     log.debug("저장된 example의 id: {}", id);
     return id;
   }
 
   @Transactional
-  public int update() {
-    return 0;
+  public Long update(@NotNull Long id, ExampleUpdateRequest request) {
+    Example example = request.toModel();
+    example.setId(id);
+    log.debug("변환된 example 정보: {}", example);
+
+    Long updatedId = exampleRepository.updateByIdSelective(example);
+    Example updatedExample = exampleRepository.findById(updatedId);
+    log.debug("업데이트 된 example 정보: {}", updatedExample);
+    validate(updatedExample);
+
+    log.debug("업데이트 된 example의 id: {}", updatedId);
+    return updatedId;
   }
 
   @Transactional
-  public int delete() {
-    return 0;
+  public Long delete() {
+    return 0L;
   }
 
   private <T> void validate(T type) {

@@ -6,9 +6,11 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface ExampleRepository {
 
-  int save(Example example);
+  Example findById(Long id);
 
-  int updateByPrimaryKeySelective(Example example);
+  Long save(Example example);
 
-  int updateByPrimaryKey(Example example);
+  Long updateByIdSelective(Example example);
+
+  Long deleteById(Example example);
 }

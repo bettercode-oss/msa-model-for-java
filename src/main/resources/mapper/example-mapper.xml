@@ -2,17 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.bettercode.msamodelforjava.repository.ExampleRepository">
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+
+  <delete id="deleteById" parameterType="java.lang.Long">
     delete
     from example
     where id = #{id,jdbcType=BIGINT}
   </delete>
-
-  <insert id="save" keyColumn="id" keyProperty="id" parameterType="kr.bettercode.msamodelforjava.model.Example"
-    useGeneratedKeys="true">
-    insert into example (`name`, age, email)
-    values (#{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR})
-  </insert>
 
   <resultMap id="example" type="kr.bettercode.msamodelforjava.model.Example">
     <id column="id" jdbcType="BIGINT" property="id"/>
@@ -21,7 +16,19 @@
     <result column="email" jdbcType="VARCHAR" property="email"/>
   </resultMap>
 
-  <update id="updateByPrimaryKeySelective" parameterType="kr.bettercode.msamodelforjava.model.Example">
+  <insert id="save" keyColumn="id" keyProperty="id" parameterType="kr.bettercode.msamodelforjava.model.Example"
+    useGeneratedKeys="true">
+    insert into example (`name`, age, email)
+    values (#{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR})
+  </insert>
+
+  <select id="findById" parameterType="java.lang.Long" resultMap="example">
+    SELECT `id`, `name`, age, email
+    FROM example
+    WHERE id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <update id="updateByIdSelective" parameterType="kr.bettercode.msamodelforjava.model.Example">
     update example
     <set>
       <if test="name != null">
@@ -34,14 +41,6 @@
         email = #{email,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-
-  <update id="updateByPrimaryKey" parameterType="kr.bettercode.msamodelforjava.model.Example">
-    update example
-    set `name` = #{name,jdbcType=VARCHAR},
-        age    = #{age,jdbcType=INTEGER},
-        email  = #{email,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
