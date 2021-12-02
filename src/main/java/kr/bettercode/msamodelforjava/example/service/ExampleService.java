@@ -37,7 +37,8 @@ public class ExampleService {
     log.debug("변환된 example 정보: {}", example);
 
     validate(example);
-    Long id = exampleRepository.save(example);
+    exampleRepository.save(example);
+    Long id = example.getId();
     log.debug("저장된 example의 id: {}", id);
     return id;
   }
@@ -48,11 +49,12 @@ public class ExampleService {
     example.setId(id);
     log.debug("변환된 example 정보: {}", example);
 
-    Long updatedId = exampleRepository.updateByIdSelective(example);
-    Example updatedExample = exampleRepository.findById(updatedId);
+    exampleRepository.updateByIdSelective(example);
+    Example updatedExample = exampleRepository.findById(id);
     log.debug("업데이트 된 example 정보: {}", updatedExample);
     validate(updatedExample);
 
+    Long updatedId = updatedExample.getId();
     log.debug("업데이트 된 example의 id: {}", updatedId);
     return updatedId;
   }

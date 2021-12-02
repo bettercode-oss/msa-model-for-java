@@ -11,9 +11,9 @@ public interface ExampleRepository {
 
   Example findById(Long id);
 
-  Long save(Example example);
+  void save(Example example);
 
-  Long updateByIdSelective(Example example);
+  void updateByIdSelective(Example example);
 
   void deleteById(Long id);
 
