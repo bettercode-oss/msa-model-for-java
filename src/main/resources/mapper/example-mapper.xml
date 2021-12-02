@@ -64,12 +64,12 @@
   </select>
 
   <select id="getPagingInfoSearch" resultType="kr.bettercode.msamodelforjava.example.dto.response.PagingInfoResponse">
-    #@formatter:off
+    <!--@formatter:off-->
     SELECT COUNT(*)                                  AS totalCount,
            #{pageRequest.size,jdbcType=INTEGER}                  AS pageSize,
            #{pageRequest.page,jdbcType=INTEGER}                  AS currentPage,
            CEIL(COUNT(*) / #{pageRequest.size,jdbcType=INTEGER}) AS totalPage
-    #@formatter:on
+    <!--#@formatter:on-->
     FROM example
     <where>
       <include refid="search"/>
