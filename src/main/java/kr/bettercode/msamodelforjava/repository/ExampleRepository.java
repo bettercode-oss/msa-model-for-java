@@ -12,5 +12,5 @@ public interface ExampleRepository {
 
   Long updateByIdSelective(Example example);
 
-  Long deleteById(Example example);
+  void deleteById(Long id);
 }

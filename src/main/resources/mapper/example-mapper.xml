@@ -43,4 +43,5 @@
     FROM example
     WHERE id = #{id,jdbcType=BIGINT}
   </delete>
+
 </mapper>

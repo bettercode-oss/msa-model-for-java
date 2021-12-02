@@ -7,12 +7,14 @@ import kr.bettercode.msamodelforjava.dto.example.ExampleUpdateRequest;
 import kr.bettercode.msamodelforjava.dto.example.IdResponse;
 import kr.bettercode.msamodelforjava.service.ExampleService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
@@ -47,8 +49,10 @@ public class CudExampleController {
     return new IdResponse(updatedId);
   }
 
-  @DeleteMapping
-  public IdResponse delete() {
-    return new IdResponse(0L);
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  @DeleteMapping("/{id}")
+  public void delete(@PathVariable @NotNull Long id) {
+    log.debug("삭제를 원하는 example의 id: {}", id);
+    exampleService.delete(id);
   }
 }

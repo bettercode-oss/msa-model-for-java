@@ -52,8 +52,9 @@ public class ExampleService {
   }
 
   @Transactional
-  public Long delete() {
-    return 0L;
+  public void delete(@NotNull Long id) {
+    exampleRepository.deleteById(id);
+    log.debug("삭제된 example의 id: {}", id);
   }
 
   private <T> void validate(T type) {
