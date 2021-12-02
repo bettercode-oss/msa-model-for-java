@@ -3,12 +3,6 @@
 
 <mapper namespace="kr.bettercode.msamodelforjava.repository.ExampleRepository">
 
-  <delete id="deleteById" parameterType="java.lang.Long">
-    DELETE
-    FROM example
-    WHERE id = #{id,jdbcType=BIGINT}
-  </delete>
-
   <resultMap id="example" type="kr.bettercode.msamodelforjava.model.Example">
     <id column="id" jdbcType="BIGINT" property="id"/>
     <result column="name" jdbcType="VARCHAR" property="name"/>
@@ -16,17 +10,17 @@
     <result column="email" jdbcType="VARCHAR" property="email"/>
   </resultMap>
 
-  <insert id="save" keyColumn="id" keyProperty="id" parameterType="kr.bettercode.msamodelforjava.model.Example"
-    useGeneratedKeys="true">
-    INSERT INTO example (`name`, age, email)
-    VALUES (#{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR})
-  </insert>
-
   <select id="findById" parameterType="java.lang.Long" resultMap="example">
     SELECT `id`, `name`, age, email
     FROM example
     WHERE id = #{id,jdbcType=BIGINT}
   </select>
+
+  <insert id="save" keyColumn="id" keyProperty="id" parameterType="kr.bettercode.msamodelforjava.model.Example"
+    useGeneratedKeys="true">
+    INSERT INTO example (`name`, age, email)
+    VALUES (#{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR})
+  </insert>
 
   <update id="updateByIdSelective" parameterType="kr.bettercode.msamodelforjava.model.Example">
     UPDATE example
@@ -43,4 +37,10 @@
     </set>
     WHERE id = #{id,jdbcType=BIGINT}
   </update>
+
+  <delete id="deleteById" parameterType="java.lang.Long">
+    DELETE
+    FROM example
+    WHERE id = #{id,jdbcType=BIGINT}
+  </delete>
 </mapper>
