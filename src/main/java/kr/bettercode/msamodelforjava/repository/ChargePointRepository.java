@@ -1,11 +1,10 @@
 package kr.bettercode.msamodelforjava.repository;
 
-import java.util.List;
-import kr.bettercode.msamodelforjava.dto.ChargePointDto;
+import kr.bettercode.msamodelforjava.model.ChargePoint;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface ChargePointRepository {
 
-  List<ChargePointDto> selectAll();
+  ChargePoint selectChargePointById(Long id);
 }

@@ -4,8 +4,46 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.bettercode.msamodelforjava.repository.ChargePointRepository">
-  <select id="selectAll" resultType="kr.bettercode.msamodelforjava.dto.ChargePointDto">
+  <resultMap id="transactionEvent" type="kr.bettercode.msamodelforjava.model.TransactionEvent">
+    <id property="id" column="id" jdbcType="BIGINT"/>
+    <result property="eventType" column="event_type" jdbcType="VARCHAR"
+      javaType="kr.bettercode.msamodelforjava.model.EventType"/>
+    <result property="eventData" column="event_data" jdbcType="VARCHAR"/>
+  </resultMap>
+
+  <resultMap id="transaction" type="kr.bettercode.msamodelforjava.model.Transaction">
+    <id property="id" column="id" jdbcType="BIGINT"/>
+    <result property="chargingConnector" column="charging_connector" jdbcType="VARCHAR"/>
+    <result property="status" column="status" jdbcType="VARCHAR"
+      javaType="kr.bettercode.msamodelforjava.model.TransactionStatus"/>
+    <collection property="transactionEvents" column="id" select="selectTransactionEventsByTransactionId"/>
+  </resultMap>
+
+  <resultMap id="chargePoint" type="kr.bettercode.msamodelforjava.model.ChargePoint">
+    <id property="id" column="id" jdbcType="BIGINT"/>
+    <result property="vendor" column="vendor" jdbcType="VARCHAR"/>
+    <result property="model" column="model" jdbcType="VARCHAR"/>
+    <result property="status" column="status" jdbcType="VARCHAR"
+      javaType="kr.bettercode.msamodelforjava.model.ChargePointStatus"/>
+    <collection property="transactions" column="id" select="selectTransactionsByChargePointId"/>
+  </resultMap>
+
+  <select id="selectChargePointById" resultMap="chargePoint"
+    resultType="kr.bettercode.msamodelforjava.model.ChargePoint" parameterType="java.lang.Long">
     SELECT id, vendor, model, status
     FROM charge_points
+    WHERE id = #{id}
+  </select>
+
+  <select id="selectTransactionsByChargePointId" resultMap="transaction" parameterType="java.lang.Long">
+    SELECT id, charging_connector, status
+    FROM transactions
+    WHERE charge_point_id = #{id, jdbcType=BIGINT}
+  </select>
+
+  <select id="selectTransactionEventsByTransactionId" resultMap="transactionEvent" parameterType="java.lang.Long">
+    SELECT id, event_type, event_data
+    FROM transaction_events
+    WHERE transaction_id = #{id, jdbcType=BIGINT}
   </select>
 </mapper>
