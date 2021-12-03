@@ -14,6 +14,7 @@ VALUES (1, 'A', 'END', 1)
      , (4, 'B', 'START', 4)
      , (5, 'B', 'END', 5)
      , (6, 'B', 'END', 6)
+     , (7, 'B', 'END', 1)
 ;
 
 INSERT INTO `transaction_events` (id, event_type, event_data, transaction_id)
@@ -32,4 +33,7 @@ VALUES (1, 'START', '{ "meter": 0, "event": { "charge": "start", "transaction_id
      , (13, 'START', '{"meter": 0, "event": {"charge": "start", "transaction_id": "ABBCFDAB"}}', 6)
      , (14, 'METER', '{"meter": 60, "event": {"charge": "charging, "transaction_id": "ABBCFDAB"}}', 6)
      , (15, 'STOP', '{"meter": 60.5, "event": {"charge": "stop", "transaction_id": "ABBCFDAB"}}', 6)
+     , (16, 'START', '{"meter": 0, "event": {"charge": "start", "transaction_id": "ABCABCAB"}}', 7)
+     , (17, 'METER', '{"meter": 60, "event": {"charge": "charging, "transaction_id": "ABCABCAB"}}', 7)
+     , (18, 'STOP', '{"meter": 60.5, "event": {"charge": "stop", "transaction_id": "ABCABCAB"}}', 7)
 ;
