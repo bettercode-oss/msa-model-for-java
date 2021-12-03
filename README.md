@@ -19,6 +19,7 @@ docker-compose run
 - Java 8
 - Spring Boot 2.5
   - Spring MVC
+  - Spring Cloud Open Feign
 - Maven
 - MySQL 5.7
 - MyBatis 3.5
