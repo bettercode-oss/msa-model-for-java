@@ -142,6 +142,36 @@ Example 이라는 간단한 모델을 가지고, 간단한 예제를 작성합�
     - 검색조건은 nullable합니다.
   - 응답 정보는 상동합니다.
 
+## 예제 프로젝트 2
+
+좀 더 실무와 유사한 구조입니다.
+
+주된 내용은 모델 정의 및 collection을 MyBatis에서 다루는 방법입니다.
+
+비즈니스 로직의 구현은 되어있지 않으며, 동작이 이렇게 이루어질 것임을 추측하기 위한 설계가 되어있습니다.
+
+### 상세 기능 설명
+
+- 충전소의 transaction 목록 조회(`GET` http://localhost:8080/api/charge-points/1)
+  - 해당 기능은 실제 쿼리를 전송하며, MyBatis에서 collection을 다루는 방법을 보여줍니다.
+  - 1~6 번까지 mock data가 있습니다.
+  - 중첩된 Collection은 N + 1 문제가 발생하므로 주의합니다. (chargePoint -> Transaction -(N+1 발생!!)> TransaciontEvents)
+- 충전 시작(`POST` http://localhost:8080/api/charge-points/1/transactions)
+  - 해당 기능은 Mock API 입니다.
+  - 충전 시작 요청시 `202 ACCEPTED` 응답을 줍니다.
+- 충전량 입력(`PUT` http://localhost:8080/api/charge-points/1/transactions/1/meters)
+  - 해당 기능은 Mock API 입니다.
+  - 충전량 입력시 `200 OK` 응답과 충전 정보를 줍니다.
+  - 요청 정보
+    - ```json
+      {
+        "chargeMeter": 100
+      }
+      ```
+- 충전 종료(`PUT` http://localhost:8080/api/charge-points/1/transactions/1/stop)
+  - 해당 기능은 Mock API 입니다.
+  - 충전 종료 요청시 `202 ACCEPTED` 응답을 줍니다.
+
 ## Logging 샘플
 
 [해당 파일](./src/main/java/kr/bettercode/msamodelforjava/example/controller/LoggingExampleController.java) 참고
