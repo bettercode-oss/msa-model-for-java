@@ -146,3 +146,26 @@ Example 이라는 간단한 모델을 가지고, 간단한 예제를 작성합�
 [해당 파일](./src/main/java/kr/bettercode/msamodelforjava/example/controller/LoggingExampleController.java) 참고
 
 로깅 예제 입니다.
+
+## Feign Client 샘플
+
+외부 API 요청을 테스트 하기 위한 샘플입니다.
+
+`Retryer`와 `ErrorDecoder`를 Custom하여 사용합니다.
+
+설정은 `application.properties`에 정의해두었습니다.
+
+- `GET http://localhost:8080/posts`: 정상적으로 데이터를 불러올 경우의 예제입니다.
+- `GET http://localhost:8080/posts/404error`: 404 오류가 발생하는 예제입니다.
+
+`FeignClient` interface를 정의해 사용하는 형태입니다.
+
+자세한 내용은 하단 참고자료를 확인해주세요.
+
+### 참고자료
+
+- [공식문서](https://docs.spring.io/spring-cloud-openfeign/docs/current/reference/html/)
+- [우아한 형제들 Feign Client](https://techblog.woowahan.com/2630/)
+- [우아한 형제들 Feign Client2](https://techblog.woowahan.com/2657/)
+- [Baeldung 가이드](https://www.baeldung.com/spring-cloud-openfeign)
+- [Open Feign vs Feign Client](https://www.baeldung.com/netflix-feign-vs-openfeign)
