@@ -1,5 +1,19 @@
 # MSA Model For Java
 
+## Docker를 이용한 실행방법
+
+프로젝트 루트에서 다음 순서로 명령어를 입력합니다.
+
+```shell
+./mvnw spring-boot:build-image
+```
+
+빌드가 되면
+
+```shell
+docker-compose run
+```
+
 ## 기술 스택
 
 - Java 8

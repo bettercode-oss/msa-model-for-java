@@ -15,5 +15,12 @@ services:
     volumes:
       - db:/var/lib/mysql
     command: [ 'mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci', '--default-authentication-plugin=mysql_native_password' ]
+  backend:
+    image: docker.io/library/msa-model-for-java:0.0.1-SNAPSHOT
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      spring.datasource.url: "jdbc:mysql://db:3306/ocpp_sample"
 volumes:
   db:
