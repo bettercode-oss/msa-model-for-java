@@ -11,7 +11,7 @@
 빌드가 되면
 
 ```shell
-docker-compose run
+docker-compose up -d
 ```
 
 ## 기술 스택
